@@ -55,7 +55,7 @@ public class suhwa_chat extends Activity implements TextToSpeech.OnInitListener 
             calledAlready = true;
         }
 
-        listView= (ListView)  findViewById(R.id.lv_fileList2);
+        listView= (ListView)  findViewById(R.id.lv_fileList);
 
         adapter = new ArrayAdapter<String>(this, R.layout.activity_listitem, fileList);
         listView.setAdapter(adapter);
