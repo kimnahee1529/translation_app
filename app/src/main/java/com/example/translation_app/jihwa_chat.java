@@ -44,11 +44,11 @@ public class jihwa_chat extends AppCompatActivity implements TextToSpeech.OnInit
         btn_Speak2 = findViewById(R.id.btnSpeak2);
         txtText2 = findViewById(R.id.txtText2);
 
-//        btn_Speak2.setOnClickListener(new View.OnClickListener() {
-//            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-//            @Override
-//            public void onClick(View v) { speakOut(); }
-//        });
+        btn_Speak2.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onClick(View v) { speakOut(); }
+        });
 
 //        if (!calledAlready2)
 //        {

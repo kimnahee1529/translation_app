@@ -42,11 +42,11 @@ public class suhwa_chat extends Activity implements TextToSpeech.OnInitListener 
         btn_Speak = findViewById(R.id.btnSpeak);
         txtText = findViewById(R.id.txtText);
 
-//        btn_Speak.setOnClickListener(new View.OnClickListener() {
-//            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-//            @Override
-//            public void onClick(View v) { speakOut(); }
-//        });
+        btn_Speak.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onClick(View v) { speakOut(); }
+        });
 //        if (!calledAlready)
 //        {
 //            FirebaseDatabase.getInstance().setPersistenceEnabled(true); // 다른 인스턴스보다 먼저 실행되어야 한다.
