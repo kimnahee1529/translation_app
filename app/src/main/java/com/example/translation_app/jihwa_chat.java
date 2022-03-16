@@ -44,11 +44,11 @@ public class jihwa_chat extends AppCompatActivity implements TextToSpeech.OnInit
         btn_Speak2 = findViewById(R.id.btnSpeak2);
         txtText2 = findViewById(R.id.txtText2);
 
-        btn_Speak2.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View v) { speakOut(); }
-        });
+//        btn_Speak2.setOnClickListener(new View.OnClickListener() {
+//            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+//            @Override
+//            public void onClick(View v) { speakOut(); }
+//        });
 
         if (!calledAlready2)
         {
@@ -64,14 +64,14 @@ public class jihwa_chat extends AppCompatActivity implements TextToSpeech.OnInit
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 //        DatabaseReference myRef  = database.getReference("지화모드");
         DatabaseReference databaseRef = database.getReference("arduino1");
-        databaseRef.child("chat").addValueEventListener(new ValueEventListener() {
+        databaseRef.child("Jihwa").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot sdataSnapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 //String m = snapshot.getValue(String.class);
                 //TextView에 텍스트 가 입력됨
                 //txtText2.setText(m);
                 // 클래스 모델이 필요?
-                for (DataSnapshot fileSnapshot : sdataSnapshot.getChildren()) {
+                for (DataSnapshot fileSnapshot : dataSnapshot.getChildren()) {
                     //MyFiles filename = (MyFiles) fileSnapshot.getValue(MyFiles.class);
                     //하위키들의 value를 어떻게 가져오느냐???
                     String str2 = fileSnapshot.child("jihwamode").getValue(String.class);

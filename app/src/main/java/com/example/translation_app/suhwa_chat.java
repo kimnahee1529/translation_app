@@ -39,16 +39,14 @@ public class suhwa_chat extends Activity implements TextToSpeech.OnInitListener 
         setContentView(R.layout.activity_suhwa_chat);
 
         tts = new TextToSpeech(this, this);
-        btn_Speak = findViewById(R.id.btnSpeak2);
+        btn_Speak = findViewById(R.id.btnSpeak);
         txtText = findViewById(R.id.txtText);
 
-        btn_Speak.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View v) {
-                speakOut();
-            }
-        });
+//        btn_Speak.setOnClickListener(new View.OnClickListener() {
+//            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+//            @Override
+//            public void onClick(View v) { speakOut(); }
+//        });
         if (!calledAlready)
         {
             FirebaseDatabase.getInstance().setPersistenceEnabled(true); // 다른 인스턴스보다 먼저 실행되어야 한다.
@@ -63,7 +61,7 @@ public class suhwa_chat extends Activity implements TextToSpeech.OnInitListener 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         //DatabaseReference myRef  = database.getReference("수화모드");
         DatabaseReference databaseRef = database.getReference("arduino1");
-        databaseRef.child("chat").addValueEventListener(new ValueEventListener() {
+        databaseRef.child("Suhwa").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
