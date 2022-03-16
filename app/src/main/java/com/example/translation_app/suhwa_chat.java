@@ -47,11 +47,11 @@ public class suhwa_chat extends Activity implements TextToSpeech.OnInitListener 
 //            @Override
 //            public void onClick(View v) { speakOut(); }
 //        });
-        if (!calledAlready)
-        {
-            FirebaseDatabase.getInstance().setPersistenceEnabled(true); // 다른 인스턴스보다 먼저 실행되어야 한다.
-            calledAlready = true;
-        }
+//        if (!calledAlready)
+//        {
+//            FirebaseDatabase.getInstance().setPersistenceEnabled(true); // 다른 인스턴스보다 먼저 실행되어야 한다.
+//            calledAlready = true;
+//        }
 
         listView= (ListView)  findViewById(R.id.lv_fileList);
 

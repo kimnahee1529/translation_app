@@ -50,11 +50,11 @@ public class jihwa_chat extends AppCompatActivity implements TextToSpeech.OnInit
 //            public void onClick(View v) { speakOut(); }
 //        });
 
-        if (!calledAlready2)
-        {
-            FirebaseDatabase.getInstance().setPersistenceEnabled(true); // 다른 인스턴스보다 먼저 실행되어야 한다.
-            calledAlready2 = true;
-        }
+//        if (!calledAlready2)
+//        {
+//            FirebaseDatabase.getInstance().setPersistenceEnabled(true); // 다른 인스턴스보다 먼저 실행되어야 한다.
+//            calledAlready2 = true;
+//        }
 
         listView2= (ListView)  findViewById(R.id.lv_fileList2);
 
