@@ -41,4 +41,12 @@ public class TodoItem {
     public void setWriteDate(String writeDate) {
         this.writeDate = writeDate;
     }
+
+    public void deleteTitle() {
+
+    }
+
+    public void deleteContent() {
+
+    }
 }

@@ -16,6 +16,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.sql.Ref;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,6 +45,15 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         holder.tv_title.setText(mTodoItems.get(position).getTitle());
         holder.tv_content.setText(mTodoItems.get(position).getContent());
         holder.tv_writeDate.setText(mTodoItems.get(position).getWriteDate());
+        //1. 파이어베이스로 데이터 올리기
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference titleRef = database.getReference("title");
+        DatabaseReference contentRef = database.getReference("content");
+
+        titleRef.setValue(holder.tv_title.getText().toString());
+        contentRef.setValue(holder.tv_content.getText().toString());
+        //1
+        //2.
     }
 
     @Override
@@ -88,6 +101,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                                         String content = et_content.getText().toString();
                                         String currentTime = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(new Date());    //현재 date 받아오기
                                         String beforeTime = todoItem.getWriteDate();
+                                        //2. 파이어베이스의 데이터 수정하기
+
+                                        //
 
                                         //update UI
                                         todoItem.setTitle(title);
