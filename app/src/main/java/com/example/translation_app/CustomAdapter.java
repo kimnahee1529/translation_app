@@ -29,6 +29,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     private ArrayList<TodoItem> mTodoItems;
     private Context mContext;
 
+    //파이어베이스 연동
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference titleRef = database.getReference("title");
+    DatabaseReference contentRef = database.getReference("content");
+
     public CustomAdapter(ArrayList<TodoItem> mTodoItems, Context mContext){
         this.mTodoItems = mTodoItems;
         this.mContext = mContext;
@@ -45,15 +50,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         holder.tv_title.setText(mTodoItems.get(position).getTitle());
         holder.tv_content.setText(mTodoItems.get(position).getContent());
         holder.tv_writeDate.setText(mTodoItems.get(position).getWriteDate());
-        //1. 파이어베이스로 데이터 올리기
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference titleRef = database.getReference("title");
-        DatabaseReference contentRef = database.getReference("content");
 
+        //1. 파이어베이스로 데이터 올리기
         titleRef.setValue(holder.tv_title.getText().toString());
         contentRef.setValue(holder.tv_content.getText().toString());
-        //1
-        //2.
+
     }
 
     @Override
@@ -101,9 +102,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                                         String content = et_content.getText().toString();
                                         String currentTime = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(new Date());    //현재 date 받아오기
                                         String beforeTime = todoItem.getWriteDate();
-                                        //2. 파이어베이스의 데이터 수정하기
 
-                                        //
+                                        //2. 파이어베이스의 데이터 수정하기
+                                        titleRef.setValue(tv_title.getText().toString());
+                                        contentRef.setValue(tv_content.getText().toString());
+
 
                                         //update UI
                                         todoItem.setTitle(title);
@@ -124,6 +127,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                                 mTodoItems.remove(curPos);
                                 notifyItemRemoved(curPos);
                                 Toast.makeText(mContext, "목록이 제거 되었습니다", Toast.LENGTH_SHORT).show();
+
+                                //3. 파이어베이스의 데이터 삭제하기
+//                                titleRef.setValue(tv_title.getText().toString());
+//                                contentRef.setValue(tv_content.getText().toString());
+                                database.getReference().child("title").removeValue();
+                                database.getReference().child("content").removeValue();
                             }
                         }
                     });
